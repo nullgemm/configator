@@ -23,12 +23,8 @@ int main(int argc, char** argv)
 	uint8_t question = 0;
 
 	// parameters, grouped in sections
-	struct configator_param map_no_section[] =
-	{
-		// use this impossible case to handle
-		// params with no section
-		{" ", NULL, NULL} 
-	};
+	struct configator_param* map_no_section = NULL;
+	struct configator_param* map_question_section = NULL;
 	struct configator_param map_test_section[] =
 	{
 		{"aaabbb", &answer, handle_config_u8},
@@ -43,7 +39,7 @@ int main(int argc, char** argv)
 	struct configator_param* map[] =
 	{
 		map_no_section,
-		NULL,
+		map_question_section,
 		map_test_section
 	};
 
@@ -55,7 +51,7 @@ int main(int argc, char** argv)
 	};
 
 	// number of parameters, by section
-	uint16_t map_len[] = {1, 0, 8};
+	uint16_t map_len[] = {0, 0, 8};
 	// number of sections
 	uint16_t sections_len = 2;
 
