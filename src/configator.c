@@ -219,6 +219,11 @@ static void configator_save_param(struct configator* config, char* line)
 	strncpy(config->value, line + i, strlen(line + i) + 1);
 
 	// searching
+	if ((config->current_section == 0) && (config->map_len[0] == 0))
+	{
+		return;
+	}
+
 	index = search(
 		config->map[config->current_section],
 		config->map_len[config->current_section],
