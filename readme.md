@@ -93,6 +93,3 @@ config.sections_len = sections_len;
 configator(&config, "config.ini");
 printf("answer = %d\n", answer);
 ```
-
-# Greetings
-KAMMTHAAR ... KAMMTHAAR ... KAMMTHAAR
