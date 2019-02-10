@@ -11,16 +11,16 @@ with command-line arguments if needed: the handling functions will be the same.
 Configator does not use any macro or dynamic memory allocation,
 and was built in less than 350 lines of C99 code.
 
-# Testing
+## Testing
 Run `make` to compile an example executable and perform basic testing
 
-# Using
-## TL;DR
+## Using
+### TL;DR
 Please see `example.c` for the condensed version
 (or better, read the actual documentation below).
 It is a bit too long to be copied here twice...
 
-## Details
+### Details
 Include `argoat.h` and compile `argoat.c` with your code.
 
 Write the functions that will handle your parameters.
