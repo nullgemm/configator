@@ -332,5 +332,7 @@ int configator(struct configator* config, char* path)
 		}
 	}
 
+	fclose(fp);
+
 	return 0;
 }
