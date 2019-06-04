@@ -75,15 +75,18 @@ static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 		}
 	}
 
-	// final check
-	char_matches += configator_strcmppos(
-		config[i].key + char_matches,
-		key + char_matches);
-
-	if (char_matches == key_len)
+	if (len > 0)
 	{
-		// found by dichotomy
-		return i;
+		// final check
+		char_matches += configator_strcmppos(
+			config[i].key + char_matches,
+			key + char_matches);
+
+		if (char_matches == key_len)
+		{
+			// found by dichotomy
+			return i;
+		}
 	}
 
 	// not found
