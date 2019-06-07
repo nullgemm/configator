@@ -5,33 +5,11 @@
 #include <string.h>
 #include <stdlib.h>
 
-// returns the number of matching chars
-static uint16_t configator_strcmppos(char* a, char* b)
-{
-	char* c = a;
-
-	while (*c == *b)
-	{
-		if (*c == '\0')
-		{
-			break;
-		}
-		else
-		{
-			++c;
-			++b;
-		}
-	}
-
-	return (c - a);
-}
-
 // returns the index of the searched element, or len if it can't be found
 static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 {
-	uint16_t char_matches = 0;
-	uint16_t key_len = strlen(key);
-
+	// strcmp indicator
+	int8_t disc;
 	// initial tested index
 	uint16_t i = len / 2;
 	// initial bounds (inclusive)
@@ -50,19 +28,14 @@ static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 		// as long as a match is possible
 		while ((k+1) != l)
 		{
-			// static string first to allow optimizations
-			// looks scary but can't segfault if input config sorted
-			char_matches += configator_strcmppos(
-				config[i].key + char_matches,
-				key + char_matches);
-			// basically this is dichotomy
-			if (char_matches == key_len)
+			disc = strcmp(config[i].key, key);
+
+			if (disc == 0)
 			{
 				// found by chance
 				return i;
 			}
-			else if (
-				config[i].key[char_matches] > key[char_matches])
+			else if (disc > 0)
 			{
 				l = i;
 				i = (i + k) / 2; // floor
@@ -78,11 +51,9 @@ static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 	if (len > 0)
 	{
 		// final check
-		char_matches += configator_strcmppos(
-			config[i].key + char_matches,
-			key + char_matches);
+		disc = strcmp(config[i].key, key);
 
-		if (char_matches == key_len)
+		if (disc == 0)
 		{
 			// found by dichotomy
 			return i;
