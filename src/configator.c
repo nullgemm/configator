@@ -16,17 +16,11 @@ static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 	uint16_t k = 0;
 	uint16_t l = len - 1;
 
-	// hack
-	if (len == 2)
-	{
-		l = 2;
-	}
-
 	// skip directly to the final check
 	if (len > 1)
 	{
 		// as long as a match is possible
-		while ((k+1) != l)
+		do
 		{
 			disc = strcmp(config[i].key, key);
 
@@ -45,7 +39,13 @@ static uint16_t search(struct configator_param* config, uint16_t len, char* key)
 				k = i;
 				i = (i + l) / 2 + (i + l) % 2; // ceil
 			}
+
+			if (len == 2)
+			{
+				break;
+			}
 		}
+		while ((k+1) != l);
 	}
 
 	if (len > 0)
