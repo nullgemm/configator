@@ -221,7 +221,7 @@ static void configator_save_param(struct configator* config, char* line)
 
 static void configator_read(FILE* fp, char* line)
 {
-	char c = fgetc(fp);
+	int c = fgetc(fp);
 	uint16_t i = 0;
 	uint16_t k = 0;
 
