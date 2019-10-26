@@ -30,6 +30,6 @@ struct configator
 	uint16_t sections_len;
 };
 
-int configator(struct configator* config, char* path);
+int configator(struct configator* config, const char* path);
 
 #endif
