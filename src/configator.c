@@ -260,7 +260,7 @@ static void configator_read(FILE* fp, char* line)
 	}
 }
 
-int configator(struct configator* config, char* path)
+int configator(struct configator* config, const char* path)
 {
 	FILE* fp = fopen(path, "r");
 
