@@ -3,7 +3,7 @@ Configator is a lightweight library for ini config file parsing.
 This was created to make it easy following the "DRY" coding rule
 without using macros, and with flexibility in mind.
 
-It integrates very well with the [Argoat](https://github.com/cylgom/argoat.git)
+It integrates very well with the [Argoat](https://github.com/nullgemm/argoat.git)
 arguments parser library, by using the same function pointers format.
 This way, you can easily load settings from an ini file while overloading them
 with command-line arguments if needed: the handling functions will be the same.
