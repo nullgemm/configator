@@ -2,6 +2,7 @@ NAME = sample
 CC = gcc
 FLAGS = -std=c99 -pedantic -g
 FLAGS+= -Wall -Wno-unused-parameter -Wextra -Werror=vla -Werror
+FLAGS+= $(EXTRAFLAGS)
 VALGRIND = --show-leak-kinds=all --track-origins=yes --leak-check=full
 
 BIND = bin
